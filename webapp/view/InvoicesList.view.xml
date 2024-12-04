@@ -1,0 +1,32 @@
+<mvc:View controllerName="alfagroup.invoices.controller.InvoicesList"
+          xmlns="sap.m"
+          xmlns:mvc="sap.ui.core.mvc">
+
+    <List id="invoiceList" 
+          headerText="{i18n>invoicesListTitle}" 
+          class="sapUiResposiveMargin" 
+          width="auto" 
+          items="{ path : 'invoices>/Invoices',
+                   sorter : { path : 'ShipperName',
+                              group : true }
+                 }">
+        <headerToolbar>
+            <Toolbar id="tool">
+            <Title id="titleTool" text="{i18n>invoicesListTitle}"></Title>
+            <ToolbarSpacer id="spacer"/>
+                <SearchField id="search" width="40%" search=".onFilterInvoices"></SearchField>
+            </Toolbar>
+        </headerToolbar>
+        <items>
+            <ObjectListItem id="object" 
+                            title="{invoices>Quantuty} x {invoices>ProductName}"
+                            number="{ parts : [ {path : 'invoices>ExtendedPrice'}]}"
+                            numberUnit="{currency>/usd}"
+                            numberState="{= ${invoices>ExtendedPrice} > 50 ? 'Success' : 'Error'}">
+                <firstStatus>
+                    <ObjectStatus id="status" text="{ path: 'invoices>Status', formatter : '.formatter.invoicesStatus'}"></ObjectStatus>
+                </firstStatus>
+            </ObjectListItem>
+        </items>
+    </List>
+</mvc:View>
