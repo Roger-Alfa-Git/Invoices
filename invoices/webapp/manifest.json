@@ -1,4 +1,4 @@
-{
+ {
     "_version": "1.65.0",
     "sap.app": {
         "id": "alfagroup.invoices",
@@ -16,7 +16,7 @@
             "toolsId": "5b7d83d8-793a-4f59-9cd7-0c795bb4e2b7"
         },
         "dataSources": {
-            "Northwind": {
+            "mainService": {
                 "uri": "/V2/Northwind/Northwind.svc",
                 "type": "OData",
                 "settings": {
@@ -67,9 +67,9 @@
                 "type": "sap.ui.model.json.JSONModel",
                 "uri": "Invoices.json"
             },
-            "": {
+            "northwind": {
                 "preload": true,
-                "dataSource": "Northwind",
+                "dataSource": "mainService",
                 "settings": {
                     "defaultBindingMode": "TwoWay",
                     "defaultCountMode": "Inline",

@@ -3,10 +3,10 @@
   "authenticationMethod": "route",
   "routes": [
     {
-      "source": "^undefined/(.*)$",
-      "target": "undefined/$1",
+      "source": "^/Northwind/(.*)$",
+      "target": "$1",
       "destination": "Northwind",
-      "authenticationType": "xsuaa",
+      "authenticationType": "none",
       "csrfProtection": false
     },
     {

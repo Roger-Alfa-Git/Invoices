@@ -6,7 +6,7 @@
           headerText="{i18n>invoicesListTitle}" 
           class="sapUiResposiveMargin" 
           width="auto" 
-          items="{ path : 'invoices>/Invoices',
+          items="{ path : 'northwind>/Invoices',
                    sorter : { path : 'ShipperName',
                               group : true }
                  }">
@@ -19,13 +19,10 @@
         </headerToolbar>
         <items>
             <ObjectListItem id="object" 
-                            title="{invoices>Quantuty} x {invoices>ProductName}"
-                            number="{ parts : [ {path : 'invoices>ExtendedPrice'}]}"
+                            title="{northwind>Quantuty} x {northwind>ProductName}"
+                            number="{ parts : [ {path : 'northwind>ExtendedPrice'}]}"
                             numberUnit="{currency>/usd}"
-                            numberState="{= ${invoices>ExtendedPrice} > 50 ? 'Success' : 'Error'}">
-                <firstStatus>
-                    <ObjectStatus id="status" text="{ path: 'invoices>Status', formatter : '.formatter.invoicesStatus'}"></ObjectStatus>
-                </firstStatus>
+                            numberState="{= ${northwind>ExtendedPrice} > 50 ? 'Success' : 'Error'}">
             </ObjectListItem>
         </items>
     </List>
