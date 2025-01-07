@@ -1,8 +1,67 @@
-<mvc:View controllerName="alfagroup.invoices.controller.InvoicesList"
+<mvc:View xmlns:table="sap.ui.table" controllerName="alfagroup.invoices.controller.InvoicesList"
           xmlns="sap.m"
           xmlns:mvc="sap.ui.core.mvc">
+    <Panel id="panelil" accessibleRole="Region">
+        <headerToolbar>
+            <Toolbar id="tool">
+            <Title id="titleTool" text="{i18n>invoicesListTitle}"></Title>
+            <ToolbarSpacer id="spacer"/>
+                <SearchField id="search" width="40%" search=".onFilterInvoices" placeholder="{i18n>searchFieldPlaceHolder}"></SearchField>
+            </Toolbar>
+        </headerToolbar>
+        <Table id="invoiceList" 
+            headerText="{i18n>invoicesListTitle}" 
+            class="sapUiResposiveMargin" 
+            width="auto" 
+            items="{ path : 'northwind>/Invoices', sorter : { path : 'ShipperName', group : true } }">
+           
+            <columns>
+                <Column id="co1" hAlign="End" minScreenWidth="Small" demandPopin="true" width="6em">
+                    <Text id="tco1" text="{i18n>columnQuantity}"/>
+                </Column>
+                <Column id="co2">
+                    <Text id="tco2" text="{i18n>columnName}"/>
+                </Column>
+                <Column id="co3" minScreenWidth="Small" demandPopin="true">
+                    <Text id="tco3" text="{i18n>columnStatus}"/>
+                </Column>
+                <Column id="co4" minScreenWidth="Tablet">
+                    <Text id="tco4" text="{i18n>columnSupplier}"/>
+                </Column>
+                <Column id="co5" hAlign="End" >
+                    <Text id="tco5" text="{i18n>columnPrice}"/>
+                </Column>
+            </columns>
 
-    <List id="invoiceList" 
+            <items>
+                <ColumnListItem id="cli" type="Navigation" press="navigateToDetails">
+                    <cells>
+                        <ObjectNumber id="on1" number="{northwind>Quantity}"/>
+                        <ObjectIdentifier id="oi1" title="{northwind>ProductName}"/>
+                        <Text id="tc1" text="{
+                            path: 'northwind>Status',
+                            formatter: '.formatter.invoicesStatus'
+                        }"/>
+                        <Text id="tc2" text="{northwind>ShipName}"/>
+                        <ObjectNumber id="on2"  number="{ parts : [ {path : 'northwind>ExtendedPrice'}, {path : 'currency>/usd'}], type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false }}"
+                                                unit="{currency>/usd}"
+                                                state="{= ${northwind>ExtendedPrice} > 50 ? 'Success' : 'Error'}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Panel>
+</mvc:View>
+                <!--ObjectListItem id="object" 
+                                title="{northwind>Quantity} x {northwind>ProductName}"
+                                number="{ parts : [ {path : 'northwind>ExtendedPrice'}]}"
+                                numberUnit="{currency>/usd}"
+                                numberState="{= ${northwind>ExtendedPrice} > 50 ? 'Success' : 'Error'}"
+                                type="Navigation"
+                                press="navigateToDetails">
+                </ObjectListItem-->
+            
+    <!--List id="invoiceList" 
           headerText="{i18n>invoicesListTitle}" 
           class="sapUiResposiveMargin" 
           width="auto" 
@@ -19,11 +78,12 @@
         </headerToolbar>
         <items>
             <ObjectListItem id="object" 
-                            title="{northwind>Quantuty} x {northwind>ProductName}"
+                            title="{northwind>Quantity} x {northwind>ProductName}"
                             number="{ parts : [ {path : 'northwind>ExtendedPrice'}]}"
                             numberUnit="{currency>/usd}"
-                            numberState="{= ${northwind>ExtendedPrice} > 50 ? 'Success' : 'Error'}">
+                            numberState="{= ${northwind>ExtendedPrice} > 50 ? 'Success' : 'Error'}"
+                            type="Navigation"
+                            press="navigateToDetails">
             </ObjectListItem>
         </items>
-    </List>
-</mvc:View>
+    </List-->

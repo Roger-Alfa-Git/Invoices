@@ -1,0 +1,23 @@
+<mvc:View controllerName="alfagroup.invoices.controller.Details"
+        xmlns="sap.m" 
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:core="sap.ui.core"
+        xmlns:alfa="alfagroup.invoices.control"
+        displayBlock="true">
+            <Page id="paginaD" title="{i18n>detailsPageTitle}" showNavButton="true" navButtonPress=".onNavBack">
+                <ObjectHeader id="objectH" title="{northwind>Quantity} x {northwind>ProductName}" responsive="true" fullScreenOptimized="true">
+                    <attributes>
+                        <ObjectAttribute id="1" text="{northwind>ShipName}"/>
+                        <ObjectAttribute id="2" text="{northwind>ShipAddress}"/>
+                        <ObjectAttribute id="3" text="{northwind>ShipCity}"/>
+                        <ObjectAttribute id="4" text="{northwind>ShipRegion}"/>
+                        <ObjectAttribute id="5" text="{northwind>ShipPostalCode}"/>
+                        <ObjectAttribute id="6" text="{northwind>ShipCountry}"/>
+                        <ObjectAttribute id="7" text="{northwind>CustomerID}"/>
+                        <ObjectAttribute id="8" text="{northwind>CustomerName}"/>
+                        <ObjectAttribute id="9" text="{northwind>ProductName}"/>
+                    </attributes>
+                </ObjectHeader>
+                <alfa:ProductRating id="rating" class="sapSmallMarginBeginEnd" change=".onRatingChange"/>
+            </Page>
+</mvc:View>

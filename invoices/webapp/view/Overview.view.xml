@@ -1,0 +1,27 @@
+<mvc:View controllerName="alfagroup.invoices.controller.App"
+        xmlns="sap.m" 
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:core="sap.ui.core"
+        displayBlock="true">
+            <Page id="pagina" title="{i18n>appTitle}">
+                <landmarkInfo>
+                    <PageAccessibleLandmarkInfo id="pali"
+                                                rootRole="Region"
+                                                rootLabel="{i18n>overviewRootLabel}"
+                                                contentRole="Main"
+                                                contentLabel="{i18n>overviewContentLabel}"
+                                                headerRole="Banner"
+                                                headerLabel="{i18n>overviewHeaderLabel}"/>
+                </landmarkInfo>
+                <headerContent>
+                    <Button id="helloDialogHeader" 
+                        press=".onOpenDialogHeader"
+                        class="sapUiSmallMarginEnd"
+                        icon="sap-icon://action"/>
+                </headerContent>
+                <content>
+                    <mvc:XMLView id="xmlview" viewName="alfagroup.invoices.view.HelloPanel"></mvc:XMLView>
+                    <mvc:XMLView id="xmlview2" viewName="alfagroup.invoices.view.InvoicesList"></mvc:XMLView>
+                </content>
+            </Page>
+</mvc:View>

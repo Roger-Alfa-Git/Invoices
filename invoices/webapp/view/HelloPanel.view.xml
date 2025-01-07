@@ -3,23 +3,23 @@
         xmlns:mvc="sap.ui.core.mvc"
         xmlns:core="sap.ui.core"
         displayBlock="true">
-            <Panel id="panel" headerText="{i18n>helloPanel}" class="sapUiResponsiveMargin" width="auto">
+            <Panel id="panel" headerText="{i18n>helloPanel}" class="sapUiResponsiveMargin" width="auto" expandable="{device>/system/phone}" expanded="{= !${device>/system/phone} }">
                 <content>
                     <Button id="helloDialogButton" 
                             text="{i18n>helloDialogBut}" 
                             press=".onOpenDialog" 
-                            class="sapUiSmallMarginEnd"
+                            class="sapUiSmallMarginEnd sapUiVisibleOnlyOnDesktop"
                             icon="sap-icon://action"/>
                     <Button id="sayhello" 
                             text="{i18n>showHelloButtonText}" 
                             press=".onShowHello" 
-                            class="sapUiSmallMarginEnd"/>
+                            class="sapUiSmallMarginEnd sapUiHideOnDesktop"/>
                     <Input id="input" 
                         value="{/recipient/name}" 
                         valueLiveUpdate="true" 
                         width="60%"/>
                     <Text id="text" text="Hello {/recipient/name}" class="sapUiSmallMargin boldElements sapthemeHighlight-asColor"/>
-                    <core:Fragment fragmentName="alfagroup.invoices.view.Form01" type="XML"/>
                 </content>
             </Panel>
+            <core:Fragment fragmentName="alfagroup.invoices.view.Form01" type="XML"/>
 </mvc:View>

@@ -14,9 +14,7 @@ sap.ui.define([
  */
 function (Controller, JSONModel, InvoicesFormatter, Filter, FilterOperator){
     return Controller.extend("alfagroup.invoices.controller.InvoicesList", {
-
         formatter: InvoicesFormatter,
-
         onInit: function() {
             var oViewModel = new JSONModel({
                 usd: "USD",
@@ -35,6 +33,13 @@ function (Controller, JSONModel, InvoicesFormatter, Filter, FilterOperator){
             const oList = this.getView().byId("invoiceList");
             const oBlinding = oList.getBinding("items");
             oBlinding.filter(aFilter);
+        },
+        navigateToDetails: function(oEvent){
+            const oItem = oEvent.getSource();
+            const oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+            oRouter.navTo("Details", {
+                invoicePath: window.encodeURIComponent(oItem.getBindingContext("northwind").getPath().substr(1))
+            });
         }
     });
 });
